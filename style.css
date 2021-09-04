@@ -1,0 +1,479 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+:root {
+  --animate-delay: 1s;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  height: fit-content;
+  padding: 50px;
+  margin: 0 auto;
+}
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #e2e2e2;
+  padding: 30px 0;
+  transition: 1s;
+  text-align: center;
+  width: 100%;
+}
+nav.sticky {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  padding: 20px;
+  box-shadow: 0 0 10px black;
+}
+.nav.sticky #progres-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1001;
+}
+nav .logo {
+  font-size: 2rem;
+  flex: 1;
+}
+nav ul {
+  flex: 1;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+}
+nav ul li a {
+  margin-left: 10px;
+  transition: 1s;
+  font-size: 1.5rem;
+}
+nav ul li:hover a {
+  color: blue;
+}
+#progres-bar {
+  --progres: 0;
+  width: var(--progres);
+  background: blueviolet;
+  height: 3px;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+#toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#toggle::after {
+  content: "";
+  position: absolute;
+  transform: translateY(6px);
+  width: 30px;
+  height: 3px;
+  background: #000;
+  transition: 1s;
+}
+#toggle::before {
+  content: "";
+  position: absolute;
+  transform: translateY(-6px);
+  width: 30px;
+  height: 3px;
+  background: #000;
+  transition: 1s;
+}
+#toggle.active::after {
+  content: "";
+  position: absolute;
+  transform: translateY(0px) rotate(45deg);
+  width: 30px;
+  height: 3px;
+  background: #000;
+}
+#toggle.active::before {
+  content: "";
+  position: absolute;
+  transform: translateY(0px) rotate(-45deg);
+  width: 30px;
+  height: 3px;
+  background: #000;
+}
+header {
+  background: url(./img/banner.jpg) no-repeat top;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  padding: 300px 0;
+  position: relative;
+}
+header .line {
+  width: 90%;
+  margin: auto;
+  height: 6px;
+  background: #000;
+}
+.items {
+  position: absolute;
+  top: 8rem;
+  left: 3rem;
+  text-align: center;
+}
+header .items h1 {
+  font-size: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+header .items h1 span {
+  font-size: 3rem;
+  color: #000;
+}
+header .social {
+  display: flex;
+  text-align: center;
+}
+header .social span {
+  color: #fff;
+}
+header .social span i {
+  font-size: 3rem;
+  padding: 20px;
+}
+.service {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+.service img {
+  width: 100%;
+}
+.holder p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+.holder-2 p {
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+.our-help {
+  padding: 100px;
+  background: #e2e2e2;
+  text-align: center;
+}
+.our-help h5 {
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+.our-help h2 {
+  margin-bottom: 20px;
+}
+.our-help p {
+  margin-bottom: 20px;
+}
+.btn {
+  display: inline-block;
+  background: crimson;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 8px;
+  transition: 1s;
+}
+.btn:hover {
+  background: #120896;
+}
+.repair-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #16384c;
+}
+
+.card-container {
+  width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 40px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  height: 260px;
+  background: #fff;
+  position: relative;
+  margin: 30px 20px;
+  padding: 20px 15px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 20px black;
+  overflow-x: visible;
+}
+.card:hover {
+  height: 520px;
+}
+.imgBox {
+  width: 260px;
+  height: 260px;
+  position: relative;
+  top: -60px;
+  left: 5px;
+  z-index: 1;
+  box-shadow: 0 0 20px black;
+  overflow-x: visible;
+}
+.imgBox img {
+  width: 100%;
+  border-radius: 5px;
+}
+.content {
+  position: relative;
+  margin-top: -200px;
+  padding: 10px 15px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.content h2 {
+  margin-bottom: 10px;
+}
+.card:hover .content {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -10px;
+  transition-delay: 0.3s;
+}
+.company-works {
+  height: 70vh;
+  background: url(./img/img-1.jpg) no-repeat center;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+  justify-items: right;
+  position: relative;
+  background-attachment: fixed;
+}
+.company-content {
+  position: absolute;
+  right: -15rem;
+}
+.company-content .line-red {
+  width: 14rem;
+  height: 6px;
+  background: #f04a4a;
+}
+.company-content h2 {
+  margin-bottom: 0.2rem;
+  font-size: 2rem;
+  color: rgb(23, 23, 23);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.company-content p {
+  margin: 0.4rem 0;
+  width: 60%;
+  font-size: 1.1rem;
+}
+.plumbing {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
+  background: lightblue;
+}
+.plumbing .text {
+  place-self: center;
+  padding: 20px 0;
+}
+
+.plumbing .text span {
+  font-size: 4rem;
+  text-align: center;
+}
+.imgPlumbing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+.imgPlumbing img {
+  width: 100%;
+  height: 100%;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+}
+.our-help .size {
+  width: 40%;
+  margin: 30px auto;
+}
+.btn {
+  text-transform: uppercase;
+}
+.gallery {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  color: #e2e2e2;
+}
+.galleryInfo {
+  height: 100%;
+  width: 50%;
+  margin-top: 15%;
+  text-align: justify;
+}
+.galleryInfo h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+}
+.galleryInfo p {
+  padding: 0 20px;
+  text-indent: 10px;
+  font-size: 1.2rem;
+}
+.container-galley {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  width: 50%;
+  padding: 20px;
+  margin-top: 5%;
+}
+.imgGalleryBox {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  transition: 0.4s ease flex;
+  cursor: pointer;
+}
+.imgGalleryBox.active {
+  flex: 5;
+}
+.imgGalleryBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.footer {
+  padding: 10px 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  background: #e2e2e2;
+}
+.footer .social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+.footer .social-icon a {
+  font-size: 3rem;
+}
+footer .social-icon a i {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1b998b;
+  transition: color 0.6s;
+}
+footer .social-icon a i:hover {
+  color: #fa198b;
+}
+.footer p {
+  font-size: 2.5rem;
+}
+@media only screen and (max-width: 800px) {
+  #toggle {
+    display: flex;
+  }
+  #toggle.active {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+  nav .logo {
+    font-size: 1.4rem;
+    flex: 1;
+  }
+  nav ul li a {
+    display: none;
+  }
+  nav ul.active li a {
+    display: inline-block;
+  }
+  nav.active {
+    height: 100vh;
+    background: #fff;
+    flex-direction: column-reverse;
+    overflow: hidden;
+  }
+  nav.active .logo {
+    display: none;
+  }
+  nav.active ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  nav.active ul li a {
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .company-content {
+    padding: 20px;
+  }
+
+  .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .our-help .size {
+    width: 100%;
+  }
+  .gallery {
+    flex-direction: column;
+  }
+  .galleryInfo {
+    margin-top: 0px;
+    width: 100%;
+  }
+  .container-galley {
+    margin-top: 20px;
+    width: 100%;
+  }
+}
